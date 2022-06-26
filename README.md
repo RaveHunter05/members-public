@@ -39,4 +39,6 @@ An alternative to fetch, easier to work with
 - El boton save debe enviar los datos a la API - completed
 - El número de seguro social (ssn), es único, y no puede repetirse en la lista. - completed
 - En caso de un intento de inserción erroneo, se debe informar dicho error - completed
-- Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente - couldn't
+- Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente - i forgot about this:(
+
+I putted all the efort in functionality, than i forgot almost completely about the css, really sorry
