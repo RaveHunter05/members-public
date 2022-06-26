@@ -1,45 +1,42 @@
-# Entrevista laboral
-## Requisitos
-* Crear en una nueva carpeta el siguiente sitio web
-![alt text](https://github.com/newcombin/devskills/blob/main/design.png "Diseño web")
-* Los datos del formulario deben ser enviados a la API, la tabla de la derecha debe recibir los datos de la misma al cargarse el sitio
-* Luego de cada insercion exitosa, se debe ingresar los datos a la tabla, sin necesidad de utilizar el endpoint GET
-* El boton reset debe limpiar los campos del formulario
-* El boton save debe enviar los datos a la API
-* El número de seguro social (ssn), es único, y no puede repetirse en la lista.
-* En caso de un intento de inserción erroneo, se debe informar dicho error
-* Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente
+# Members technical test
 
-## API
-La pagina debe poder comunicarse con la API de este repositorio. La misma consta de 2 endpoints
-* GET http://localhost:8081/api/members - para obtener los miembros
-* POST http://localhost:8081/api/members - para añadir un nuevo miembro
-* Para poder utilizarlos, el Authorization header debe formatearse como Bearer [token].
+## Libraries used in the process
 
-## AUTH
-Para poder utilizar los 2 endpoint anteriores debe obtener un token y enviarlo en los llamados.
-* POST http://localhost:8081/auth - para obtener el token
-body:
-  "username": "sarah"
-  "password": "connor"
+### Formik and yup
 
-### Start API server
-* Clonar este repositorio
-* Instalar las dependencias
-* Usar el comando "serve"
+For validating forms in a easier way, and create custom validations that could take too much time by my own hand
 
-### Validaciones de la API
-* **firstName, lastName y address:** Mas de 1 caracter, sin espacios a los costados (trim)
-* **ssn:** Tener el formato ###-##-#### (cada # es un numero, los guiones son obligatorios)
-* Si el front no cumple las validaciones debe deshabilitar el boton de enviar
+### React router
 
-## Condiciones y tips
-* Los colores y formas son solo a caracter ilustrativo
-* No es necesario que sea mobile responsive
-* No es necesaria compatibilidad con IE o Edge
-* Puede usar ES6 sin problemas
-* Puede usar HTML5 sin ningun problema
-* Se puede usar google :D
-* Se puede usar POSTMAN para verificar el funcionamento de la API
-* Crear un archivo README.md para indicar como se debe utilizar su desarrollo
-* Subir a un repositior git con privilegios publicos de lectura y compartir el link como resultado
+I used this library for make restrictions in the access in the route for creating new members, so that is mandatory for you to signin first (because there was a restriction in the api, it doesn't work without the token)
+
+### Redux, redux toolkit
+
+I got use of redux and redux toolkit, in order to make a connection between the table of members information and the form for creating new members.
+
+### Axios
+
+An alternative to fetch, easier to work with
+
+## Instructions
+
+1. Use node 16.13.0. It is specified in the package.json i did this in order to avoid problems with the installation of the libraries.
+2. Install all the libraries in the root, run `yarn install`
+3. Install all the libraries in the dir /frontend, here run `yarn install` as well
+4. Start your api, `yarn serve`
+5. Start the frontend app, go to the /frontend dir, and there run `yarn start`
+6. Signin, first than all you need to use the signin webpage, otherwise we can't obtain a jwt token, and the endpoints for creating and getting members doesn't work. So you have to click on the button login. The correct values are there in the fields as initial values, so only click login and you'll see the members page.
+7. Create a member:
+   1. Fill the fields, they're going to be trimmed by default, they're completely validated (as the requirements told, if you don't fill the fields properly well it's gonna give you an error, and you will not be able to submit the form).
+   2. Click on SAVE, then the member will be saved and will appear in the right side table.
+   3. Click on reset, once you click on reset all the fields for the form will be empty again.
+
+## About the requirements
+
+- Los datos del formulario deben ser enviados a la API, la tabla de la derecha debe recibir los datos de la misma al cargarse el sitio - completed
+- Luego de cada insercion exitosa, se debe ingresar los datos a la tabla, sin necesidad de utilizar el endpoint GET - completed
+- El boton reset debe limpiar los campos del formulario - completed
+- El boton save debe enviar los datos a la API - completed
+- El número de seguro social (ssn), es único, y no puede repetirse en la lista. - completed
+- En caso de un intento de inserción erroneo, se debe informar dicho error - completed
+- Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente - couldn't

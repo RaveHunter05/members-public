@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Members technical test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Libraries used in the process
 
-## Available Scripts
+### Formik and yup
 
-In the project directory, you can run:
+For validating forms in a easier way, and create custom validations that could take too much time by my own hand
 
-### `npm start`
+### React router
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I used this library for make restrictions in the access in the route for creating new members, so that is mandatory for you to signin first (because there was a restriction in the api, it doesn't work without the token)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Redux, redux toolkit
 
-### `npm test`
+I got use of redux and redux toolkit, in order to make a connection between the table of members information and the form for creating new members.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Axios
 
-### `npm run build`
+An alternative to fetch, easier to work with
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Use node 16.13.0. It is specified in the package.json i did this in order to avoid problems with the installation of the libraries.
+2. Install all the libraries in the root, run `yarn install`
+3. Install all the libraries in the dir /frontend, here run `yarn install` as well
+4. Start your api, `yarn serve`
+5. Start the frontend app, go to the /frontend dir, and there run `yarn start`
+6. Signin, first than all you need to use the signin webpage, otherwise we can't obtain a jwt token, and the endpoints for creating and getting members doesn't work. So you have to click on the button login. The correct values are there in the fields as initial values, so only click login and you'll see the members page.
+7. Create a member:
+   1. Fill the fields, they're going to be trimmed by default, they're completely validated (as the requirements told, if you don't fill the fields properly well it's gonna give you an error, and you will not be able to submit the form).
+   2. Click on SAVE, then the member will be saved and will appear in the right side table.
+   3. Click on reset, once you click on reset all the fields for the form will be empty again.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## About the requirements
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Los datos del formulario deben ser enviados a la API, la tabla de la derecha debe recibir los datos de la misma al cargarse el sitio - completed
+- Luego de cada insercion exitosa, se debe ingresar los datos a la tabla, sin necesidad de utilizar el endpoint GET - completed
+- El boton reset debe limpiar los campos del formulario - completed
+- El boton save debe enviar los datos a la API - completed
+- El número de seguro social (ssn), es único, y no puede repetirse en la lista. - completed
+- En caso de un intento de inserción erroneo, se debe informar dicho error - completed
+- Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente - couldn't
